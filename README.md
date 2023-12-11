@@ -1,2 +1,2 @@
-# Django Auth integration with Keycloak using mozilla-django-oidc  
-
+# django-auth-oidc
+Django OpenID Connect with Keycloak Auth 
