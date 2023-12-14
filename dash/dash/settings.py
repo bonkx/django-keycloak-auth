@@ -57,22 +57,20 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'login_required.middleware.LoginRequiredMiddleware',  # New
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'dash.middleware.RequireLoginMiddleware',
+    # 'dash.middleware.RequireLoginMiddleware',
     'mozilla_django_oidc.middleware.SessionRefresh',
 ]
 
-LOGIN_REQUIRED_URLS = (
-    # //i am disallowing all url
-    r'(.*)',
-)
-LOGIN_REQUIRED_URLS_EXCEPTIONS = (
+LOGIN_REQUIRED_IGNORE_PATHS = [
+    # r'/accounts/logout/$',
+    # r'/accounts/signup/$',
     r'/admin(.*)$',
     r'/oidc(.*)$',
-    r'/public',
-)
+]
 
 AUTHENTICATION_BACKENDS = [
     'dash.auth_backends.KeycloakOIDCAuthenticationBackend',

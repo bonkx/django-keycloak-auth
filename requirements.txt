@@ -4,3 +4,4 @@ markdown
 django-filter
 mozilla-django-oidc
 python-dotenv
+django-login-required-middleware
