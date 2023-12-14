@@ -200,7 +200,7 @@ OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
 OIDC_RP_SIGN_ALGO = "RS256"
 
 LOGIN_URL = "oidc_authentication_init"
-LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000')
+LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
 LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout/?redirect_uri=%s" % (
     OIDC_OP_BASE_URL, LOGIN_REDIRECT_URL)
 # "/protocol/openid-connect/logout?client_id=" + \
