@@ -8,4 +8,6 @@ urlpatterns = [
     path("", home.index, name="home"),
     path("protected/", home.protected, name="protected"),
     path("public/", home.public, name="public"),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+
 ]
