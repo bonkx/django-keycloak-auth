@@ -60,8 +60,19 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    'dash.middleware.RequireLoginMiddleware',
     'mozilla_django_oidc.middleware.SessionRefresh',
 ]
+
+LOGIN_REQUIRED_URLS = (
+    # //i am disallowing all url
+    r'(.*)',
+)
+LOGIN_REQUIRED_URLS_EXCEPTIONS = (
+    r'/admin(.*)$',
+    r'/oidc(.*)$',
+    r'/public',
+)
 
 AUTHENTICATION_BACKENDS = [
     'dash.auth_backends.KeycloakOIDCAuthenticationBackend',
@@ -75,7 +86,7 @@ ROOT_URLCONF = 'dash.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -198,6 +209,7 @@ OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
     OIDC_OP_BASE_URL)
 
 OIDC_RP_SIGN_ALGO = "RS256"
+OIDC_RP_SCOPES = os.environ.get("OIDC_RP_SCOPES", "openid profile email")
 
 LOGIN_URL = "oidc_authentication_init"
 LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
