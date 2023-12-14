@@ -186,12 +186,13 @@ def discover_oidc(discovery_url: str) -> dict:
 
 
 # OpenID connect configuration
+KC_BASE_URI = os.getenv('KC_BASE_URI', 'http://localhost:8080')
 KC_ADMIN_USER = os.getenv('KC_ADMIN_USER', 'admin')
 KC_ADMIN_PASS = os.getenv('KC_ADMIN_PASS', 'admin')
 KC_REALM = os.getenv('KC_REALM', 'test')
 OIDC_RP_CLIENT_ID = os.getenv('KC_CLIENT_ID', 'test')
 OIDC_RP_CLIENT_SECRET = os.getenv('KC_CLIENT_SECRET', 'super_scret')
-OIDC_OP_BASE_URL = "http://localhost:8080/auth/realms/%s" % (KC_REALM)
+OIDC_OP_BASE_URL = "%s/auth/realms/%s" % (KC_BASE_URI, KC_REALM)
 
 OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
     OIDC_OP_BASE_URL)
@@ -199,7 +200,7 @@ OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
 OIDC_RP_SIGN_ALGO = "RS256"
 
 LOGIN_URL = "oidc_authentication_init"
-LOGIN_REDIRECT_URL = "http://localhost:8000"
+LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000')
 LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout/?redirect_uri=%s" % (
     OIDC_OP_BASE_URL, LOGIN_REDIRECT_URL)
 # "/protocol/openid-connect/logout?client_id=" + \
