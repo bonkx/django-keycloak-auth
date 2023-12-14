@@ -17,6 +17,13 @@
     {% else %}
     <a href="{% url 'oidc_authentication_init' %}">Login</a>
     {% endif %}
+
+    <p>
+        <a href="{% url "public" %}">Public Page</a>
+    </p>
+    <p>
+        <a href="{% url "protected" %}">Protected Page</a>
+    </p>
 </div>
 
 {% endblock %}

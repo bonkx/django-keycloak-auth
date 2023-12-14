@@ -6,5 +6,6 @@ from web.views import home
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view()),
     path("", home.index, name="home"),
-    path("pub/", home.pub, name="pub"),
+    path("protected/", home.protected, name="protected"),
+    path("public/", home.public, name="public"),
 ]

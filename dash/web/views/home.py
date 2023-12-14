@@ -4,11 +4,16 @@ from django.shortcuts import render
 # Create your views here.
 
 
-# @login_required
+def public(request):
+    return render(request, "web/public.html", {})
+
+
+@login_required
 def index(request):
     # user = request.user
     return render(request, "web/home.html", {})
 
 
-def pub(request):
-    return render(request, "web/public.html", {})
+@login_required
+def protected(request):
+    return render(request, "web/protect.html", {})
