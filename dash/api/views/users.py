@@ -23,7 +23,7 @@ def list_users(request):
     paginator = CustomPagination()
     paginator.page_size = 10
 
-    data = User.objects.all()
+    data = User.objects.all().order_by('id')
 
     result_page = paginator.paginate_queryset(data, request)
 
@@ -33,7 +33,7 @@ def list_users(request):
 
 class UserViewSet(viewsets.ModelViewSet):
     model = User
-    queryset = model.objects.all()
+    queryset = model.objects.all().order_by('id')
     serializer_class = UserSerializer
     pagination_class = CustomPagination
     http_method_names = ['get', ]

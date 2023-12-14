@@ -70,6 +70,7 @@ LOGIN_REQUIRED_IGNORE_PATHS = [
     # r'/accounts/signup/$',
     r'/admin(.*)$',
     r'/oidc(.*)$',
+    r'/api(.*)$',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -223,5 +224,9 @@ OIDC_OP_AUTHORIZATION_ENDPOINT = discovery_info["authorization_endpoint"]
 OIDC_OP_TOKEN_ENDPOINT = discovery_info["token_endpoint"]
 OIDC_OP_USER_ENDPOINT = discovery_info["userinfo_endpoint"]
 OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
+
+OIDC_STORE_ACCESS_TOKEN = True
+# OIDC_STORE_ID_TOKEN = True
+ALLOW_LOGOUT_GET_METHOD = True
 
 #################### END KEYCLOAK CONFIG ####################

@@ -14,10 +14,9 @@
         {% csrf_token %}
         <input type="submit" value="Logout">
     </form>
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Logout Auth">
-    </form>
+    <p>
+        <a href="{% url 'oidc_logout' %}">Get Logout</a>
+    </p>
     {% else %}
     <a href="{% url 'oidc_authentication_init' %}">Login</a>
     {% endif %}
