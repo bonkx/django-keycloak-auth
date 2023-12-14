@@ -209,7 +209,7 @@ OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
     OIDC_OP_BASE_URL)
 
 OIDC_RP_SIGN_ALGO = "RS256"
-OIDC_RP_SCOPES = os.environ.get("OIDC_RP_SCOPES", "openid profile email")
+OIDC_RP_SCOPES = os.environ.get("OIDC_RP_SCOPES", "openid email profile")
 
 LOGIN_URL = "oidc_authentication_init"
 LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
