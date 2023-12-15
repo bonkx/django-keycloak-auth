@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
@@ -18,6 +19,7 @@ def index(request):
     # print("oidc_access_token : ", oidc_access_token)
     # oidc_id_token = request.session['oidc_id_token']
     # print("oidc_id_token : ", oidc_id_token)
+    print(settings.KC_BASE_URI)
     return render(request, "web/home.html", {})
 
 

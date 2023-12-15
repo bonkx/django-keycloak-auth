@@ -51,19 +51,19 @@ INSTALLED_APPS = [
     'web',
 ]
 
+# 'login_required.middleware.LoginRequiredMiddleware',  # New
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'login_required.middleware.LoginRequiredMiddleware',  # New
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    # 'dash.middleware.RequireLoginMiddleware',
     'mozilla_django_oidc.middleware.SessionRefresh',
 ]
+# 'dash.middleware.RequireLoginMiddleware',
 
 LOGIN_REQUIRED_IGNORE_PATHS = [
     # r'/accounts/logout/$',
