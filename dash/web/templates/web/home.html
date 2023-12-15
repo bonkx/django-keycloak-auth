@@ -15,7 +15,7 @@
         <input type="submit" value="Logout">
     </form>
     <p>
-        <a href="{% url 'oidc_logout' %}">Get Logout</a>
+        <a href="{% url 'logout' %}">Get Logout</a>
     </p>
     {% else %}
     <a href="{% url 'oidc_authentication_init' %}">Login</a>
