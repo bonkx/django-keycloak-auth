@@ -14,9 +14,9 @@
         {% csrf_token %}
         <input type="submit" value="Logout">
     </form>
-    <p>
+    {% comment %} <p>
         <a href="{% url 'logout' %}">Get Logout</a>
-    </p>
+    </p> {% endcomment %}
     {% else %}
     <a href="{% url 'oidc_authentication_init' %}">Login</a>
     {% endif %}
