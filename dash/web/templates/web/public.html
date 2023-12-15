@@ -1,0 +1,9 @@
+<h4>
+Public Page
+</h4>
+
+{% if user.is_authenticated %}
+<a href="{% url 'home' %}">Home</a>
+{% else %}
+<a href="{% url 'oidc_authentication_init' %}">Login</a>
+{% endif %}
