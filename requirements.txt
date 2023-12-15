@@ -2,6 +2,7 @@ Django
 djangorestframework
 markdown
 django-filter
+gunicorn
 mozilla-django-oidc
 python-dotenv
 django-login-required-middleware
