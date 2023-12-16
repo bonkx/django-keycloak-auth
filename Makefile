@@ -1,9 +1,9 @@
 build:
-	docker-compose down --remove-orphans
+	docker-compose down
 	docker-compose build
 
 down:
-	docker-compose down --remove-orphans
+	docker-compose down
 
 shell:
 	docker-compose run web python manage.py shell
