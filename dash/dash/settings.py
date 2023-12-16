@@ -232,6 +232,6 @@ OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
 # OIDC_STORE_ID_TOKEN = True
 ALLOW_LOGOUT_GET_METHOD = True
 SESSION_COOKIE_SECURE = False
-OIDC_OP_LOGOUT_URL_METHOD = 'dash.provider_logout'
+OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.provider_logout'
 
 #################### END KEYCLOAK CONFIG ####################
