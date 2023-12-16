@@ -10,13 +10,13 @@
     <p>Current user: {{user}}</p>
     <p>User: {{user.get_full_name}}</p>
     <p>Email: {{user.email}}</p>
-    <form action="{% url 'oidc_logout' %}" method="post">
+    {% comment %} <form action="{% url 'oidc_logout' %}" method="post">
         {% csrf_token %}
         <input type="submit" value="Logout">
-    </form>
-    {% comment %} <p>
-        <a href="{% url 'logout' %}">Get Logout</a>
-    </p> {% endcomment %}
+    </form> {% endcomment %}
+    <p>
+        <a href="{% url 'oidc_logout' %}">Logout</a>
+    </p>
     {% else %}
     <a href="{% url 'oidc_authentication_init' %}">Login</a>
     {% endif %}
