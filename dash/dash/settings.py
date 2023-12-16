@@ -57,12 +57,12 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'login_required.middleware.LoginRequiredMiddleware',  # New
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'mozilla_django_oidc.middleware.SessionRefresh',
 ]
+# 'login_required.middleware.LoginRequiredMiddleware',  # New
 # 'dash.middleware.RequireLoginMiddleware',
 
 # LOGIN_REQUIRED_IGNORE_PATHS = [
@@ -237,6 +237,6 @@ LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
 # OIDC_STORE_ID_TOKEN = True
 # ALLOW_LOGOUT_GET_METHOD = True
 # SESSION_COOKIE_SECURE = True
-OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.provider_logout'
+# OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.provider_logout'
 
 #################### END KEYCLOAK CONFIG ####################
