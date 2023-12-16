@@ -218,17 +218,17 @@ LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
 # Discover OpenID Connect endpoints
 discovery_info = discover_oidc(OIDC_OP_DISCOVERY_ENDPOINT)
 OIDC_OP_AUTHORIZATION_ENDPOINT = discovery_info["authorization_endpoint"]
-print(OIDC_OP_AUTHORIZATION_ENDPOINT)
+# print(OIDC_OP_AUTHORIZATION_ENDPOINT)
 OIDC_OP_TOKEN_ENDPOINT = discovery_info["token_endpoint"]
-print(OIDC_OP_TOKEN_ENDPOINT)
+# print(OIDC_OP_TOKEN_ENDPOINT)
 OIDC_OP_USER_ENDPOINT = discovery_info["userinfo_endpoint"]
-print(OIDC_OP_USER_ENDPOINT)
+# print(OIDC_OP_USER_ENDPOINT)
 OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
-print(OIDC_OP_JWKS_ENDPOINT)
+# print(OIDC_OP_JWKS_ENDPOINT)
 OIDC_OP_LOGOUT_ENDPOINT = discovery_info["end_session_endpoint"]
-print(OIDC_OP_LOGOUT_ENDPOINT)
+# print(OIDC_OP_LOGOUT_ENDPOINT)
 
-LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
+LOGOUT_REDIRECT_URL = "%s?post_redirect_uri=%s" % (
     OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
 # LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout?client_id=%s&redirect_uri=%s" % (
 #     OIDC_OP_BASE_URL, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL)
