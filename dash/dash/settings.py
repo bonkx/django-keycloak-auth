@@ -73,9 +73,9 @@ MIDDLEWARE = [
 #     r'/api(.*)$',
 # ]
 
-# 'dash.auth_backends.KeycloakOIDCAuthenticationBackend',
+# 'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
 AUTHENTICATION_BACKENDS = [
-    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+    'dash.auth_backends.KeycloakOIDCAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
