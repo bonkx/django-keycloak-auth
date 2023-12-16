@@ -7,3 +7,4 @@ mozilla-django-oidc
 # mozilla-django-oidc==2.0.0
 python-dotenv
 django-login-required-middleware
+django-cors-headers

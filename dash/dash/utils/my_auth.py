@@ -26,6 +26,6 @@ def provider_logout(request):
     #     f'&redirect_uri={return_to_url}'
     logout_request = logout_url + '?' + \
         urlencode({'id_token_hint': id_token,
-                  'post_logout_redirect_uri': return_to_url})
+                  'redirect_uri': return_to_url})
     print(logout_request)
     return logout_request
