@@ -32,7 +32,11 @@ SECRET_KEY = 'kzr7202=a#4qd$g3z_v0v1$n*#1f5rv@moc%tq@yf+we2t)^#g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '*',
+    'https://app1.puskeu.polri.info',
+    'https://app2.puskeu.polri.info'
+]
 
 
 # Application definition
@@ -76,7 +80,11 @@ LOGIN_REQUIRED_IGNORE_PATHS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://10.101.215.10:8080"
+    "http://10.101.215.10:8080",
+    "https://auth.puskeu.polri.go.id"
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.puskeu.polri\.go.id$",
 ]
 
 AUTHENTICATION_BACKENDS = [
