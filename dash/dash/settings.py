@@ -227,6 +227,6 @@ OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
 
 # OIDC_STORE_ACCESS_TOKEN = True
 # OIDC_STORE_ID_TOKEN = True
-# ALLOW_LOGOUT_GET_METHOD = True
+ALLOW_LOGOUT_GET_METHOD = True
 
 #################### END KEYCLOAK CONFIG ####################
