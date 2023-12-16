@@ -1,32 +1,52 @@
-<!-- templates/home.html-->
 {% extends "base.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}
+Welcome to Keycloak
+{% endblock %}
 
 {% block content %}
+<div class="jumbotron jumbotron-fluid py-5">
+    <div class="container">
 
-<div>
-    {% if user.is_authenticated %}
-    <p>Current user: {{user}}</p>
-    <p>User: {{user.get_full_name}}</p>
-    <p>Email: {{user.email}}</p>
-    <form action="{% url 'oidc_logout' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Logout">
-    </form>
-    <p>
-        <a href="{% url 'oidc_logout' %}">Logout</a>
-    </p>
-    {% else %}
-    <a href="{% url 'oidc_authentication_init' %}">Login</a>
-    {% endif %}
+        {% if user.is_authenticated %}
+        <p class="display-6">Welcome, {{user}}</p>
+        <p>User: {{user.get_full_name}}</p>
 
-    <p>
-        <a href="{% url "public" %}">Public Page</a>
-    </p>
-    <p>
-        <a href="{% url "protected" %}">Protected Page</a>
-    </p>
+        <p>Keycloak User Info:</p>
+        {% if request.session.login_token %}
+        {{request.session.login_token | safe|escape}}
+
+        <br>
+
+        {% for key, value in request.session.login_token.items %}
+        {{key}}: {{value}}
+        {% endfor %}
+
+        {% comment %} <table>
+            <thead>
+                <tr>
+                    {% for key in request.session.login_token %}
+                    <th>{{ key }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    {% for key in key_order %}
+                    <td>{{ item.get(key) }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table> {% endcomment %}
+
+        {% endif %}
+        {% endif %}
+
+    </div>
 </div>
-
 {% endblock %}
+
+{% block javascripts %}
+{% endblock javascripts %}

@@ -33,9 +33,8 @@ SECRET_KEY = 'kzr7202=a#4qd$g3z_v0v1$n*#1f5rv@moc%tq@yf+we2t)^#g'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '*',
-    'https://app1.puskeu.polri.info',
-    'https://app2.puskeu.polri.info',
+    'localhost', '127.0.0.1',
+    '10.101.213.121', '10.101.213.122',
 ]
 
 
@@ -50,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
+    # 'corsheaders',
 
     'api',
     'web',
@@ -59,7 +58,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -69,7 +68,6 @@ MIDDLEWARE = [
 
     'mozilla_django_oidc.middleware.SessionRefresh',
 ]
-# 'dash.middleware.RequireLoginMiddleware',
 
 LOGIN_REQUIRED_IGNORE_PATHS = [
     # r'/accounts/logout/$',
@@ -79,13 +77,13 @@ LOGIN_REQUIRED_IGNORE_PATHS = [
     r'/api(.*)$',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://10.101.215.10:8080",
-    "https://auth.puskeu.polri.go.id"
-]
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https://\w+\.puskeu.polri\.go.id$",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://10.101.215.10:8080",
+#     "https://auth.puskeu.polri.go.id"
+# ]
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     r"^https://\w+\.puskeu.polri\.go.id$",
+# ]
 
 AUTHENTICATION_BACKENDS = [
     'dash.auth_backends.KeycloakOIDCAuthenticationBackend',
@@ -194,7 +192,8 @@ def discover_oidc(discovery_url: str) -> dict:
     """
     Performs OpenID Connect discovery to retrieve the provider configuration.
     """
-    response = requests.get(discovery_url, verify=False)
+    response = requests.get(discovery_url)
+    # response = requests.get(discovery_url, verify=False)
     if response.status_code != 200:
         raise ValueError("Failed to retrieve provider configuration.")
 
@@ -223,7 +222,7 @@ OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
     OIDC_OP_BASE_URL)
 
 OIDC_RP_SIGN_ALGO = "RS256"
-OIDC_RP_SCOPES = os.getenv("OIDC_RP_SCOPES", "openid email profile")
+OIDC_RP_SCOPES = os.getenv("OIDC_RP_SCOPES", "openid email profile puskeu")
 
 LOGIN_URL = "oidc_authentication_init"
 LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
@@ -243,11 +242,9 @@ OIDC_OP_LOGOUT_ENDPOINT = discovery_info["end_session_endpoint"]
 
 LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
     OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
-# LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout?client_id=%s&redirect_uri=%s" % (
-#     OIDC_OP_BASE_URL, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL)
 
 # ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1056)
-OIDC_VERIFY_SSL = False
+# OIDC_VERIFY_SSL = False
 
 # OIDC_STORE_ACCESS_TOKEN = True
 # OIDC_STORE_ID_TOKEN = True

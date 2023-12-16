@@ -1,6 +1,15 @@
-{% load static %}
-Protected Page
+{% extends "base.html" %}
 
-<p>
-    <a href="{% url "home" %}">Home</a>
-</p>
+{% block title %}
+Protected Page
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid py-5">
+    <div class="container">
+
+        <h4>This is Page with Authentication</h4>
+
+    </div>
+</div>
+{% endblock %}
