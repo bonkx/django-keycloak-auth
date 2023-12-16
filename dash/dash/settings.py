@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q!^h^atj@7^bq5(h#21ce&9^%xvd*gx5%rkpc@(of3oox%n86v'
+SECRET_KEY = 'kzr7202=a#4qd$g3z_v0v1$n*#1f5rv@moc%tq@yf+we2t)^#g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'login_required.middleware.LoginRequiredMiddleware',  # New
+    # 'login_required.middleware.LoginRequiredMiddleware',  # New
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
@@ -65,13 +65,13 @@ MIDDLEWARE = [
 ]
 # 'dash.middleware.RequireLoginMiddleware',
 
-LOGIN_REQUIRED_IGNORE_PATHS = [
-    # r'/accounts/logout/$',
-    # r'/accounts/signup/$',
-    r'/admin(.*)$',
-    r'/oidc(.*)$',
-    r'/api(.*)$',
-]
+# LOGIN_REQUIRED_IGNORE_PATHS = [
+#     # r'/accounts/logout/$',
+#     # r'/accounts/signup/$',
+#     r'/admin(.*)$',
+#     r'/oidc(.*)$',
+#     r'/api(.*)$',
+# ]
 
 AUTHENTICATION_BACKENDS = [
     'dash.auth_backends.KeycloakOIDCAuthenticationBackend',
