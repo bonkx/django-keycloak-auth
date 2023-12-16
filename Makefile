@@ -33,3 +33,10 @@ run:
 
 runserver:
 	docker-compose -f docker-compose.prod.yml up -d --remove-orphans
+
+buildserver:
+	docker-compose -f docker-compose.prod.yml up down
+	docker-compose -f docker-compose.prod.yml up build
+
+downserver:
+	docker-compose -f docker-compose.prod.yml up down
