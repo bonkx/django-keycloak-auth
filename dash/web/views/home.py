@@ -19,7 +19,7 @@ def index(request):
     # print("oidc_access_token : ", oidc_access_token)
     # oidc_id_token = request.session['oidc_id_token']
     # print("oidc_id_token : ", oidc_id_token)
-    print(settings.KC_BASE_URI)
+    # print(settings.KC_BASE_URI)
     return render(request, "web/home.html", {})
 
 

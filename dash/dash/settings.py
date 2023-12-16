@@ -73,9 +73,9 @@ MIDDLEWARE = [
 #     r'/api(.*)$',
 # ]
 
-# 'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
 AUTHENTICATION_BACKENDS = [
     'dash.auth_backends.KeycloakOIDCAuthenticationBackend',
+    # 'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
@@ -209,7 +209,7 @@ OIDC_OP_BASE_URL = "%s/auth/realms/%s" % (KC_BASE_URI, KC_REALM)
 OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
     OIDC_OP_BASE_URL)
 
-OIDC_RP_SIGN_ALGO = "RS256"
+# OIDC_RP_SIGN_ALGO = "RS256"
 OIDC_RP_SCOPES = os.environ.get("OIDC_RP_SCOPES", "openid email profile")
 
 LOGIN_URL = "oidc_authentication_init"
@@ -228,7 +228,7 @@ OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
 OIDC_OP_LOGOUT_ENDPOINT = discovery_info["end_session_endpoint"]
 # print(OIDC_OP_LOGOUT_ENDPOINT)
 
-LOGOUT_REDIRECT_URL = "%s?client_id=%s&redirect_uri=%s/" % (
+LOGOUT_REDIRECT_URL = "%s?client_id=%s&post_logout_redirect_uri=%s/logout/" % (
     OIDC_OP_LOGOUT_ENDPOINT, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL)
 # LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout?client_id=%s&redirect_uri=%s" % (
 #     OIDC_OP_BASE_URL, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL)
