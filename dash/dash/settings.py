@@ -233,7 +233,7 @@ LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
 # LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout?client_id=%s&redirect_uri=%s" % (
 #     OIDC_OP_BASE_URL, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL)
 
-OIDC_VERIFY_SSL = False
+OIDC_VERIFY_SSL = True
 # OIDC_STORE_ACCESS_TOKEN = True
 # OIDC_STORE_ID_TOKEN = True
 ALLOW_LOGOUT_GET_METHOD = True
