@@ -228,18 +228,18 @@ OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
 OIDC_OP_LOGOUT_ENDPOINT = discovery_info["end_session_endpoint"]
 # print(OIDC_OP_LOGOUT_ENDPOINT)
 
-LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
-    OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
+# LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
+#     OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
 # LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout?client_id=%s&redirect_uri=%s" % (
 #     OIDC_OP_BASE_URL, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL)
 
 # OIDC_VERIFY_SSL = False
-# OIDC_STORE_ACCESS_TOKEN = True
-# OIDC_STORE_ID_TOKEN = True
+OIDC_STORE_ACCESS_TOKEN = True
+OIDC_STORE_ID_TOKEN = True
 ALLOW_LOGOUT_GET_METHOD = True
 # SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = True
-# OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.provider_logout'
+# CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_HTTPONLY = True
+OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.provider_logout'
 
 #################### END KEYCLOAK CONFIG ####################
