@@ -212,15 +212,17 @@ OIDC_RP_SIGN_ALGO = "RS256"
 OIDC_RP_SCOPES = os.environ.get("OIDC_RP_SCOPES", "openid email profile")
 
 LOGIN_URL = "oidc_authentication_init"
-# LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout/?redirect_uri=%s" % (
-    OIDC_OP_BASE_URL, LOGIN_REDIRECT_URL)
+LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
+OIDC_OP_LOGOUT_ENDPOINT = "%s/protocol/openid-connect/logout" % (
+    OIDC_OP_BASE_URL)
+LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
+    OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
 # LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout?client_id=%s&redirect_uri=%s" % (
 #     OIDC_OP_BASE_URL, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL)
 
 # Discover OpenID Connect endpoints
 discovery_info = discover_oidc(OIDC_OP_DISCOVERY_ENDPOINT)
+print(discovery_info)
 OIDC_OP_AUTHORIZATION_ENDPOINT = discovery_info["authorization_endpoint"]
 OIDC_OP_TOKEN_ENDPOINT = discovery_info["token_endpoint"]
 OIDC_OP_USER_ENDPOINT = discovery_info["userinfo_endpoint"]
@@ -229,5 +231,7 @@ OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
 # OIDC_STORE_ACCESS_TOKEN = True
 # OIDC_STORE_ID_TOKEN = True
 ALLOW_LOGOUT_GET_METHOD = True
+SESSION_COOKIE_SECURE = False
+OIDC_OP_LOGOUT_URL_METHOD = 'dash.provider_logout'
 
 #################### END KEYCLOAK CONFIG ####################
