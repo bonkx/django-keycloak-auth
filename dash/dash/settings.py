@@ -222,16 +222,19 @@ LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
 
 # Discover OpenID Connect endpoints
 discovery_info = discover_oidc(OIDC_OP_DISCOVERY_ENDPOINT)
-print(discovery_info)
 OIDC_OP_AUTHORIZATION_ENDPOINT = discovery_info["authorization_endpoint"]
+print(OIDC_OP_AUTHORIZATION_ENDPOINT)
 OIDC_OP_TOKEN_ENDPOINT = discovery_info["token_endpoint"]
+print(OIDC_OP_TOKEN_ENDPOINT)
 OIDC_OP_USER_ENDPOINT = discovery_info["userinfo_endpoint"]
+print(OIDC_OP_USER_ENDPOINT)
 OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
+print(OIDC_OP_JWKS_ENDPOINT)
 
 # OIDC_STORE_ACCESS_TOKEN = True
 # OIDC_STORE_ID_TOKEN = True
 ALLOW_LOGOUT_GET_METHOD = True
 SESSION_COOKIE_SECURE = False
-OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.provider_logout'
+# OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.provider_logout'
 
 #################### END KEYCLOAK CONFIG ####################
