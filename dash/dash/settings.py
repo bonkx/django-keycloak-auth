@@ -36,7 +36,6 @@ ALLOWED_HOSTS = [
     '*',
     'https://app1.puskeu.polri.info',
     'https://app2.puskeu.polri.info',
-    'https://auth.puskeu.polri.go.id',
 ]
 
 
