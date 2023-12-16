@@ -40,3 +40,7 @@ buildserver:
 
 downserver:
 	docker-compose -f docker-compose.prod.yml down
+
+restartserver:
+	docker-compose -f docker-compose.prod.yml down
+	docker-compose -f docker-compose.prod.yml up -d --remove-orphans
