@@ -30,11 +30,11 @@ class KeycloakOIDCAuthenticationBackend(OIDCAuthenticationBackend):
         if not email:
             return self.UserModel.objects.none()
         users = self.UserModel.objects.filter(email__iexact=email)
-        print(claims)
+        # print(claims)
         return users
 
     def update_user(self, user, claims):
-        # print(claims)
+        print(claims)
         user.first_name = claims.get('given_name', '')
         user.last_name = claims.get('family_name', '')
         user.email = claims.get('email')

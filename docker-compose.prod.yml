@@ -1,19 +1,31 @@
 version: "3.8"
 
 services:
+  nginx:
+    build: ./nginx
+    # command: nginx -g "daemon off;"
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+    restart: "on-failure"
+
   redis:
     image: redis:7-alpine
 
   web:
     build: &app-image
       context: .
-    command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn dash.wsgi:application --bind 0.0.0.0:8000 -w 16"
     volumes: &app-vol
       - ./dash:/app
       - static_volume:/app/static
       - media_volume:/app/media
     environment: &app-env
-      - DJANGO_SETTINGS_MODULE=dash.settings_docker
+      - DJANGO_SETTINGS_MODULE=dash.settings_prod
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
       - REDIS_HOST=redis
@@ -21,8 +33,6 @@ services:
       - ./.env
     depends_on:
       - redis
-    ports:
-      - "8000:8000"
 
 volumes:
   static_volume:

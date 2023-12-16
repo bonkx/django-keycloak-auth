@@ -1,8 +1,7 @@
-"""
-URL configuration for dash project.
+"""dash URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -19,6 +18,9 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('oidc/', include('mozilla_django_oidc.urls')),
+    path('api/auth/', include('rest_framework.urls')),
+    # path("accounts/", include("django.contrib.auth.urls")),
     path('', include('web.urls')),
+    path('api/v1/', include('api.urls')),
+    path('oidc/', include('mozilla_django_oidc.urls')),
 ]
