@@ -209,7 +209,7 @@ OIDC_OP_BASE_URL = "%s/auth/realms/%s" % (KC_BASE_URI, KC_REALM)
 OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
     OIDC_OP_BASE_URL)
 
-# OIDC_RP_SIGN_ALGO = "RS256"
+OIDC_RP_SIGN_ALGO = "RS256"
 OIDC_RP_SCOPES = os.environ.get("OIDC_RP_SCOPES", "openid email profile")
 
 LOGIN_URL = "oidc_authentication_init"
