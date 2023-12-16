@@ -57,26 +57,26 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'login_required.middleware.LoginRequiredMiddleware',  # New
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'mozilla_django_oidc.middleware.SessionRefresh',
 ]
-# 'login_required.middleware.LoginRequiredMiddleware',  # New
 # 'dash.middleware.RequireLoginMiddleware',
 
-# LOGIN_REQUIRED_IGNORE_PATHS = [
-#     # r'/accounts/logout/$',
-#     # r'/accounts/signup/$',
-#     r'/admin(.*)$',
-#     r'/oidc(.*)$',
-#     r'/api(.*)$',
-# ]
+LOGIN_REQUIRED_IGNORE_PATHS = [
+    # r'/accounts/logout/$',
+    # r'/accounts/signup/$',
+    r'/admin(.*)$',
+    r'/oidc(.*)$',
+    r'/api(.*)$',
+]
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
     'dash.auth_backends.KeycloakOIDCAuthenticationBackend',
     # 'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 
