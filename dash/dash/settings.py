@@ -213,8 +213,7 @@ OIDC_RP_SCOPES = os.environ.get("OIDC_RP_SCOPES", "openid email profile")
 
 LOGIN_URL = "oidc_authentication_init"
 LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
-LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout/?redirect_uri=%s" % (
-    OIDC_OP_BASE_URL, LOGIN_REDIRECT_URL)
+LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout/" % (OIDC_OP_BASE_URL)
 # LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout?client_id=%s&redirect_uri=%s" % (
 #     OIDC_OP_BASE_URL, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL)
 
