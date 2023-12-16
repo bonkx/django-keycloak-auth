@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from mozilla_django_oidc.auth import OIDCAuthenticationBackend
 
 # from login_required import login_not_required
 
@@ -19,6 +20,7 @@ def index(request):
     # print("oidc_access_token : ", oidc_access_token)
     # oidc_id_token = request.session['oidc_id_token']
     # print("oidc_id_token : ", oidc_id_token)
+    print("userinfo : ", OIDCAuthenticationBackend.get_userinfo())
     print(settings.KC_BASE_URI)
     return render(request, "web/home.html", {})
 
