@@ -13,4 +13,5 @@ def provider_logout(request):
     # logout_request = logout_url + '?' + \
     #     urlencode({'redirect_uri': return_to_url,
     #               'client_id': settings.OIDC_RP_CLIENT_ID})
+    print(logout_request)
     return logout_request
