@@ -213,7 +213,7 @@ OIDC_RP_SIGN_ALGO = "RS256"
 # OIDC_RP_SCOPES = os.getenv("OIDC_RP_SCOPES", "openid email profile")
 
 LOGIN_URL = "oidc_authentication_init"
-# LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
+LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
 
 # Discover OpenID Connect endpoints
 discovery_info = discover_oidc(OIDC_OP_DISCOVERY_ENDPOINT)
@@ -228,10 +228,8 @@ OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
 OIDC_OP_LOGOUT_ENDPOINT = discovery_info["end_session_endpoint"]
 # print(OIDC_OP_LOGOUT_ENDPOINT)
 
-LOGOUT_REDIRECT_URL = "%s" % (
-    OIDC_OP_LOGOUT_ENDPOINT)
-# LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
-#     OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
+LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
+    OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
 # LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout?client_id=%s&redirect_uri=%s" % (
 #     OIDC_OP_BASE_URL, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL)
 
