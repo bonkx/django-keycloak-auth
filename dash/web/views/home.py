@@ -12,7 +12,7 @@ def public(request):
     return render(request, "web/public.html", {})
 
 
-# @login_required
+@login_required
 def index(request):
     # user = request.user
     # oidc_access_token = request.session['oidc_access_token']
