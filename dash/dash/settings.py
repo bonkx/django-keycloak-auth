@@ -186,7 +186,7 @@ def discover_oidc(discovery_url: str) -> dict:
     """
     Performs OpenID Connect discovery to retrieve the provider configuration.
     """
-    response = requests.get(discovery_url)
+    response = requests.get(discovery_url, verify=False)
     if response.status_code != 200:
         raise ValueError("Failed to retrieve provider configuration.")
 
@@ -238,7 +238,9 @@ LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
 # LOGOUT_REDIRECT_URL = "%s/protocol/openid-connect/logout?client_id=%s&redirect_uri=%s" % (
 #     OIDC_OP_BASE_URL, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL)
 
-# OIDC_VERIFY_SSL = False
+# ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1056)
+OIDC_VERIFY_SSL = False
+
 # OIDC_STORE_ACCESS_TOKEN = True
 # OIDC_STORE_ID_TOKEN = True
 ALLOW_LOGOUT_GET_METHOD = True
