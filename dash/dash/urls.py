@@ -18,9 +18,9 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('oidc/', include('mozilla_django_oidc.urls')),
     path('api/auth/', include('rest_framework.urls')),
     # path("accounts/", include("django.contrib.auth.urls")),
     path('', include('web.urls')),
     path('api/v1/', include('api.urls')),
+    path('oidc/', include('mozilla_django_oidc.urls')),
 ]
