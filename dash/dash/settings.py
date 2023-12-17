@@ -32,10 +32,12 @@ SECRET_KEY = 'kzr7202=a#4qd$g3z_v0v1$n*#1f5rv@moc%tq@yf+we2t)^#g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost', '127.0.0.1',
-    '10.101.213.121', '10.101.213.122',
-]
+# ALLOWED_HOSTS = [
+#     'localhost', '127.0.0.1',
+#     '10.101.213.121', '10.101.213.122',
+#     'auth.puskeu.polri.info'
+# ]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -210,25 +212,28 @@ def discover_oidc(discovery_url: str) -> dict:
 
 
 # OpenID connect configuration
-KC_BASE_URI = os.getenv('KC_BASE_URI', 'http://localhost:8080')
-KC_ADMIN_USER = os.getenv('KC_ADMIN_USER', 'admin')
-KC_ADMIN_PASS = os.getenv('KC_ADMIN_PASS', 'admin')
-KC_REALM = os.getenv('KC_REALM', 'test')
-OIDC_RP_CLIENT_ID = os.getenv('KC_CLIENT_ID', 'test')
-OIDC_RP_CLIENT_SECRET = os.getenv('KC_CLIENT_SECRET', 'super_scret')
+KC_BASE_URI = os.environ.get('KC_BASE_URI', 'http://localhost:8080')
+KC_ADMIN_USER = os.environ.get('KC_ADMIN_USER', 'admin')
+KC_ADMIN_PASS = os.environ.get('KC_ADMIN_PASS', 'admin')
+KC_REALM = os.environ.get('KC_REALM', 'test')
+OIDC_RP_CLIENT_ID = os.environ.get('KC_CLIENT_ID', 'test')
+OIDC_RP_CLIENT_SECRET = os.environ.get('KC_CLIENT_SECRET', 'super_scret')
 OIDC_OP_BASE_URL = "%s/auth/realms/%s" % (KC_BASE_URI, KC_REALM)
 
 OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
     OIDC_OP_BASE_URL)
 
 OIDC_RP_SIGN_ALGO = "RS256"
-OIDC_RP_SCOPES = os.getenv("OIDC_RP_SCOPES", "openid email profile puskeu")
+OIDC_RP_SCOPES = os.environ.get(
+    "OIDC_RP_SCOPES", "openid email profile puskeu")
 
 LOGIN_URL = "oidc_authentication_init"
-LOGIN_REDIRECT_URL = os.getenv('LOGIN_REDIRECT_URL', 'http://localhost:8000/')
+LOGIN_REDIRECT_URL = os.environ.get(
+    'LOGIN_REDIRECT_URL', 'http://localhost:8000/')
 
 # Discover OpenID Connect endpoints
 discovery_info = discover_oidc(OIDC_OP_DISCOVERY_ENDPOINT)
+# print(discovery_info)
 OIDC_OP_AUTHORIZATION_ENDPOINT = discovery_info["authorization_endpoint"]
 # print(OIDC_OP_AUTHORIZATION_ENDPOINT)
 OIDC_OP_TOKEN_ENDPOINT = discovery_info["token_endpoint"]
