@@ -245,8 +245,11 @@ OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
 OIDC_OP_LOGOUT_ENDPOINT = discovery_info["end_session_endpoint"]
 # print(OIDC_OP_LOGOUT_ENDPOINT)
 
-LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
-    OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
+# LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
+#     OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
+
+# KEYCLOAK CUSTOM LOGOUT FUNCTION
+OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.keycloak_auth.provider_logout'
 
 # ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1056)
 # OIDC_VERIFY_SSL = False
@@ -257,6 +260,5 @@ ALLOW_LOGOUT_GET_METHOD = True
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
 # CSRF_COOKIE_HTTPONLY = True
-# OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.provider_logout'
 
 #################### END KEYCLOAK CONFIG ####################
