@@ -32,12 +32,12 @@ SECRET_KEY = 'kzr7202=a#4qd$g3z_v0v1$n*#1f5rv@moc%tq@yf+we2t)^#g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = [
-#     'localhost', '127.0.0.1',
-#     '10.101.213.121', '10.101.213.122',
-#     'auth.puskeu.polri.info'
-# ]
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'localhost', '127.0.0.1',
+    '10.101.213.121', '10.101.213.122',
+    'auth.puskeu.polri.info'
+]
+# ALLOWED_HOSTS = ['*']
 
 
 # Application definition
