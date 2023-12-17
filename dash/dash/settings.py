@@ -33,7 +33,7 @@ SECRET_KEY = 'kzr7202=a#4qd$g3z_v0v1$n*#1f5rv@moc%tq@yf+we2t)^#g'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    # 'localhost', '127.0.0.1',
+    'localhost', '127.0.0.1',
     # '10.101.213.121', '10.101.213.122',
     'app.puskeu.polri.info',
     'apepe.puskeu.polri.info',

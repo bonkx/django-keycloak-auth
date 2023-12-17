@@ -43,3 +43,6 @@ downserver:
 restartserver:
 	docker-compose -f docker-compose.prod.yml down
 	docker-compose -f docker-compose.prod.yml up -d --remove-orphans
+
+logserver:
+	docker-compose -f docker-compose.prod.yml logs
