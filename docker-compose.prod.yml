@@ -19,7 +19,7 @@ services:
   web:
     build: &app-image
       context: .
-    command: sh -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn dash.wsgi:application --bind 0.0.0.0:8000 -w 16"
+    command: sh -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn dash.wsgi:application --bind 0.0.0.0:8000 --forwarded-allow-ips="*" -w 16"
     volumes: &app-vol
       - ./dash:/app
       - static_volume:/app/static
