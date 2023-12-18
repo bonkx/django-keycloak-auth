@@ -249,6 +249,7 @@ OIDC_OP_LOGOUT_ENDPOINT = discovery_info["end_session_endpoint"]
 
 LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
     OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
+print("LOGOUT_REDIRECT_URL : ", LOGOUT_REDIRECT_URL)
 
 # KEYCLOAK CUSTOM LOGOUT FUNCTION
 # OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.keycloak_auth.provider_logout'
