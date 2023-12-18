@@ -8,7 +8,7 @@ def provider_logout(request):
         request.META['wsgi.url_scheme'],
         request.META['HTTP_HOST'],
     )
-    print(host)
+    # print(host)
     logout_url = settings.OIDC_OP_LOGOUT_ENDPOINT
     # return_to_url = request.build_absolute_uri(settings.LOGOUT_REDIRECT_URL)
     # return_to_url = request.build_absolute_uri(settings.LOGIN_REDIRECT_URL)
