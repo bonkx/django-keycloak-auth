@@ -35,7 +35,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost', '127.0.0.1',
     '10.101.213.121', '10.101.213.122',
-    'app.puskeu.polri.info', 'apepe.puskeu.polri.info'
+    'app.puskeu.polri.info', 'apepe.puskeu.polri.info',
     'auth.puskeu.polri.info'
 ]
 # ALLOWED_HOSTS = ['*']
