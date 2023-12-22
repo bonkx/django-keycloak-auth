@@ -16,9 +16,8 @@ def provider_logout(request):
     print("id_token :", id_token)
 
     logout_url = settings.OIDC_OP_LOGOUT_ENDPOINT
-    # return_to_url = request.build_absolute_uri(settings.LOGOUT_REDIRECT_URL)
-    return_to_url = request.build_absolute_uri(settings.LOGIN_REDIRECT_URL)
-    # return_to_url = request.build_absolute_uri(LOGIN_URL)
+    # return_to_url = request.build_absolute_uri(settings.LOGIN_REDIRECT_URL)
+    return_to_url = settings.LOGIN_REDIRECT_URL
     # logout_request = \
     #     f'{settings.OIDC_OP_LOGOUT_ENDPOINT}?client_id={settings.OIDC_RP_CLIENT_ID}' \
     #     f'&redirect_uri={return_to_url}'
