@@ -32,6 +32,7 @@ class KeycloakOIDCAuthenticationBackend(OIDCAuthenticationBackend):
             return self.UserModel.objects.none()
         users = self.UserModel.objects.filter(email__iexact=email)
 
+        # print(claims)
         json_claims = json.dumps(claims, indent=4)
         # print("login_token :", json_claims)
         """
