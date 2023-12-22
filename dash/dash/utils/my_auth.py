@@ -15,17 +15,15 @@ def provider_logout(request):
     id_token = request.session['oidc_id_token']
     print("id_token :", id_token)
 
-    LOGIN_URL = reverse_lazy('oidc_authentication_callback')
-    id_token = str(request.COOKIES['csrftoken'])
     logout_url = settings.OIDC_OP_LOGOUT_ENDPOINT
     # return_to_url = request.build_absolute_uri(settings.LOGOUT_REDIRECT_URL)
-    # return_to_url = request.build_absolute_uri(settings.LOGIN_REDIRECT_URL)
-    return_to_url = request.build_absolute_uri(LOGIN_URL)
+    return_to_url = request.build_absolute_uri(settings.LOGIN_REDIRECT_URL)
+    # return_to_url = request.build_absolute_uri(LOGIN_URL)
     # logout_request = \
     #     f'{settings.OIDC_OP_LOGOUT_ENDPOINT}?client_id={settings.OIDC_RP_CLIENT_ID}' \
     #     f'&redirect_uri={return_to_url}'
     logout_request = logout_url + '?' + \
         urlencode({'id_token_hint': id_token,
-                  'redirect_uri': return_to_url})
+                  'post_logout_redirect_uri': return_to_url})
     print(logout_request)
     return logout_request
