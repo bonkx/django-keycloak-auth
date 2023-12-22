@@ -233,9 +233,8 @@ OIDC_RP_SCOPES = os.environ.get(
     "OIDC_RP_SCOPES", "openid email profile puskeu")
 
 LOGIN_URL = "oidc_authentication_init"
-# LOGIN_REDIRECT_URL = os.environ.get(
-#     'LOGIN_REDIRECT_URL', 'http://localhost:8000/')
-LOGIN_REDIRECT_URL = 'http://localhost:8000'
+LOGIN_REDIRECT_URL = os.environ.get(
+    'LOGIN_REDIRECT_URL', 'http://localhost:8000/')
 
 # Discover OpenID Connect endpoints
 discovery_info = discover_oidc(OIDC_OP_DISCOVERY_ENDPOINT)
