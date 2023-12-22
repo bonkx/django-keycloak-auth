@@ -235,6 +235,7 @@ OIDC_RP_SCOPES = os.environ.get(
 LOGIN_URL = "oidc_authentication_init"
 LOGIN_REDIRECT_URL = os.environ.get(
     'LOGIN_REDIRECT_URL', 'http://localhost:8000/')
+# LOGIN_REDIRECT_URL = 'http://localhost:8000/oidc/callback/'
 
 # Discover OpenID Connect endpoints
 discovery_info = discover_oidc(OIDC_OP_DISCOVERY_ENDPOINT)
