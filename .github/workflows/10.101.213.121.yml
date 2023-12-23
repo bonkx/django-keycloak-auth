@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: "10.101.213.121"
 
 on:
   # push:
