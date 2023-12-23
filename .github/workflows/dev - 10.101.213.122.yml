@@ -1,8 +1,8 @@
-name: "Prod - 10.101.213.122"
+name: "Dev - 10.101.213.122"
 
 on:
   push:
-    branches: ["main"]
+    branches: ["hotfix"]
   # workflow_dispatch:
 
 jobs:
