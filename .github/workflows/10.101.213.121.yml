@@ -3,9 +3,6 @@ name: "10.101.213.121"
 on:
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
-    type: ["merged"]
   # workflow_dispatch:
 
 jobs:
