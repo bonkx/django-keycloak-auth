@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI/CD
 
 on:
   # push:
@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on:
       - self-hosted
-      - 10.101.213.121
+      - keycloak-dummy
 
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +22,10 @@ jobs:
 
       - name: Build the Docker image
         # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-        run: make buildserver
+        run: |
+          docker-compose -f docker-compose.prod.yml down
+	        docker-compose -f docker-compose.prod.yml build
 
-      - name: Run the Docker image
-        run: make runserver
+      - name: Run the App
+        run: |
+          docker-compose -f docker-compose.prod.yml up -d --remove-orphans
