@@ -18,7 +18,7 @@ jobs:
 
       - name: Initiate env
         run: |
-          cp /opt/django-keycloak-auth/.env pwd/.env
+          cp /opt/django-keycloak-auth/.env .
 
       - name: Build the Docker image
         # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
