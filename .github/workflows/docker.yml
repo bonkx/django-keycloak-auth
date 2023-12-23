@@ -11,7 +11,8 @@ jobs:
   build:
     runs-on:
       - self-hosted
-      - keycloak-dummy
+      - 10.101.213.121
+      - 10.101.213.122
 
     steps:
       - uses: actions/checkout@v3
