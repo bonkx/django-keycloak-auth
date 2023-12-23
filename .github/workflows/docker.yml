@@ -16,11 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Initiate env
+        run: |
+          cp /opt/django-keycloak-auth/.env pwd/.env
+
       - name: Build the Docker image
         # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-        # run: make buildserver
-        run: |
-          cat /opt/django-keycloak-auth/.env
+        run: make buildserver
 
-      # - name: Run the Docker image
-      #   run: make runserver
+      - name: Run the Docker image
+        run: make runserver
