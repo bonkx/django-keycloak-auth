@@ -31,13 +31,13 @@ def public(request):
     return render(request, "web/public.html", {})
 
 
-@login_not_required
+# @login_not_required
 def index(request):
-    if request.user.is_authenticated:
-        return redirect('dashboard')
-    else:
-        return redirect('oidc_authentication_init')
-    # return render(request, "web/home.html", {})
+    # if request.user.is_authenticated:
+    #     return redirect('dashboard')
+    # else:
+    #     return redirect('oidc_authentication_init')
+    return render(request, "web/home.html", {})
 
 
 # @login_required

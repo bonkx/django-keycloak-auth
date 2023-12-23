@@ -261,7 +261,7 @@ LOGOUT_REDIRECT_URL = "%s?client_id=%s&post_logout_redirect_uri=%s" % (
 # OIDC_VERIFY_SSL = False
 
 # OIDC_STORE_ACCESS_TOKEN = True
-OIDC_STORE_ID_TOKEN = True
+# OIDC_STORE_ID_TOKEN = True
 # ALLOW_LOGOUT_GET_METHOD = True
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
