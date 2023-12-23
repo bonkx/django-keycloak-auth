@@ -9,8 +9,8 @@
             {% with request.resolver_match.url_name as url_name %}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {% if url_name == 'home' %}active{% endif %}" aria-current="page"
-                        href="/">Home</a>
+                    <a class="nav-link {% if url_name == 'dashboard' %}active{% endif %}"
+                        href="{% url "dashboard" %}">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if url_name == 'protected' %}active{% endif %}"
@@ -22,16 +22,22 @@
                 </li>
             </ul>
             {% endwith %}
-            
+
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
 
             {% if user.is_authenticated %}
-            <button id="btnLogout" class="btn btn-danger mx-2" type="button">
+            <form action="{% url 'oidc_logout' %}" method="post">
+                {% csrf_token %}
+                <button id="btnLogout" class="btn btn-danger mx-2" type="submit">
+                    <i id="loader" class=""></i> Logout
+                </button>
+            </form>
+            {% comment %} <button id="btnLogout" class="btn btn-danger mx-2" type="button">
                 <i id="loader" class=""></i> Logout
-            </button>
+            </button> {% endcomment %}
             {% else %}
             <a class="btn btn-success mx-2" href="{% url 'oidc_authentication_init' %}">Login</a>
             {% endif %}

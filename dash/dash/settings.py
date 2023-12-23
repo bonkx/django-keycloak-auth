@@ -32,14 +32,13 @@ SECRET_KEY = 'kzr7202=a#4qd$g3z_v0v1$n*#1f5rv@moc%tq@yf+we2t)^#g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = [
-#     'localhost', '127.0.0.1',
-#     # '10.101.213.121', '10.101.213.122',
-#     'app.puskeu.polri.info',
-#     'apepe.puskeu.polri.info',
-#     'auth.puskeu.polri.info'
-# ]
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'localhost', '127.0.0.1',
+    '10.101.213.121', '10.101.213.122',
+    'app.puskeu.polri.info', 'apepe.puskeu.polri.info',
+    # 'auth.puskeu.polri.info'
+]
+# ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -220,14 +219,18 @@ KC_ADMIN_PASS = os.environ.get('KC_ADMIN_PASS', 'admin')
 KC_REALM = os.environ.get('KC_REALM', 'test')
 OIDC_RP_CLIENT_ID = os.environ.get('KC_CLIENT_ID', 'test')
 OIDC_RP_CLIENT_SECRET = os.environ.get('KC_CLIENT_SECRET', 'super_scret')
-OIDC_OP_BASE_URL = "%s/auth/realms/%s" % (KC_BASE_URI, KC_REALM)
+
+# jboss
+# OIDC_OP_BASE_URL = "%s/auth/realms/%s" % (KC_BASE_URI, KC_REALM)
+# quay
+OIDC_OP_BASE_URL = "%s/realms/%s" % (KC_BASE_URI, KC_REALM)
 
 OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
     OIDC_OP_BASE_URL)
 
 OIDC_RP_SIGN_ALGO = "RS256"
 OIDC_RP_SCOPES = os.environ.get(
-    "OIDC_RP_SCOPES", "openid email profile puskeu")
+    "OIDC_RP_SCOPES", "openid email profile")
 
 LOGIN_URL = "oidc_authentication_init"
 LOGIN_REDIRECT_URL = os.environ.get(
@@ -247,21 +250,22 @@ OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
 OIDC_OP_LOGOUT_ENDPOINT = discovery_info["end_session_endpoint"]
 # print(OIDC_OP_LOGOUT_ENDPOINT)
 
-LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
-    OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
-print("LOGOUT_REDIRECT_URL : ", LOGOUT_REDIRECT_URL)
-
-# KEYCLOAK CUSTOM LOGOUT FUNCTION
-# OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.keycloak_auth.provider_logout'
+# jboss
+# LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
+#     OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
+# quay
+LOGOUT_REDIRECT_URL = "%s?client_id=%s&post_logout_redirect_uri=%s" % (
+    OIDC_OP_LOGOUT_ENDPOINT, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL,)
 
 # ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1056)
 # OIDC_VERIFY_SSL = False
 
 # OIDC_STORE_ACCESS_TOKEN = True
 # OIDC_STORE_ID_TOKEN = True
-ALLOW_LOGOUT_GET_METHOD = True
+# ALLOW_LOGOUT_GET_METHOD = True
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
 # CSRF_COOKIE_HTTPONLY = True
+# OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.keycloak_logout'
 
 #################### END KEYCLOAK CONFIG ####################

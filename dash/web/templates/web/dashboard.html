@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid py-5">
+    <div class="container">
+
+        {% if user.is_authenticated %}
+        <p class="display-6">Welcome, {{user}}</p>
+        <p>User: {{user.get_full_name}}</p>
+
+        <p>Keycloak User Info:</p>
+        {% if request.session.login_token %}
+        {{request.session.login_token | safe|escape}}
+
+        <br>
+
+        {% comment %} <table>
+            <thead>
+                <tr>
+                    {% for key in request.session.login_token %}
+                    <th>{{ key }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    {% for key in key_order %}
+                    <td>{{ item.get(key) }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table> {% endcomment %}
+
+        {% endif %}
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
