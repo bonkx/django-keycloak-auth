@@ -1,6 +1,8 @@
 import requests
 from django.conf import settings
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from login_required import login_not_required
 from mozilla_django_oidc.auth import OIDCAuthenticationBackend
@@ -47,3 +49,10 @@ def index(request):
 # @login_required
 def protected(request):
     return render(request, "web/protect.html", {})
+
+
+def oauth_logout(request):
+    print('Loggin out {}'.format(request.user))
+    logout(request)
+    print(request.user)
+    return HttpResponseRedirect('/protected/')
