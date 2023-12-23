@@ -1,9 +1,9 @@
 name: "Dev - 10.101.213.122"
 
 on:
-  push:
-    branches: ["hotfix"]
-  # workflow_dispatch:
+  # push:
+  #   branches: ["hotfix"]
+  workflow_dispatch:
 
 jobs:
   build:
