@@ -18,7 +18,9 @@ jobs:
 
       - name: Build the Docker image
         # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-        run: make buildserver
+        # run: make buildserver
+        run: |
+          cat /opt/django-keycloak-auth/.env
 
-      - name: Run the Docker image
-        run: make runserver
+      # - name: Run the Docker image
+      #   run: make runserver
