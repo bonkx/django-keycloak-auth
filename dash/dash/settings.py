@@ -266,7 +266,6 @@ LOGOUT_REDIRECT_URL = "%s?client_id=%s&post_logout_redirect_uri=%s" % (
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
 # CSRF_COOKIE_HTTPONLY = True
-# OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.provider_logout'
 # OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.keycloak_logout'
 
 #################### END KEYCLOAK CONFIG ####################
