@@ -36,7 +36,6 @@ ALLOWED_HOSTS = [
     'localhost', '127.0.0.1',
     '10.101.213.121', '10.101.213.122',
     'app.puskeu.polri.info', 'apepe.puskeu.polri.info',
-    # 'auth.puskeu.polri.info'
 ]
 # ALLOWED_HOSTS = ['*']
 
@@ -220,9 +219,6 @@ KC_REALM = os.environ.get('KC_REALM', 'test')
 OIDC_RP_CLIENT_ID = os.environ.get('KC_CLIENT_ID', 'test')
 OIDC_RP_CLIENT_SECRET = os.environ.get('KC_CLIENT_SECRET', 'super_scret')
 
-# jboss
-# OIDC_OP_BASE_URL = "%s/auth/realms/%s" % (KC_BASE_URI, KC_REALM)
-# quay
 OIDC_OP_BASE_URL = "%s/realms/%s" % (KC_BASE_URI, KC_REALM)
 
 OIDC_OP_DISCOVERY_ENDPOINT = "%s/.well-known/openid-configuration" % (
@@ -250,9 +246,6 @@ OIDC_OP_JWKS_ENDPOINT = discovery_info["jwks_uri"]
 OIDC_OP_LOGOUT_ENDPOINT = discovery_info["end_session_endpoint"]
 # print(OIDC_OP_LOGOUT_ENDPOINT)
 
-# jboss
-# LOGOUT_REDIRECT_URL = "%s?redirect_uri=%s" % (
-#     OIDC_OP_LOGOUT_ENDPOINT, LOGIN_REDIRECT_URL)
 # quay
 LOGOUT_REDIRECT_URL = "%s?client_id=%s&post_logout_redirect_uri=%s" % (
     OIDC_OP_LOGOUT_ENDPOINT, OIDC_RP_CLIENT_ID, LOGIN_REDIRECT_URL,)
@@ -263,9 +256,6 @@ LOGOUT_REDIRECT_URL = "%s?client_id=%s&post_logout_redirect_uri=%s" % (
 # OIDC_STORE_ACCESS_TOKEN = True
 # OIDC_STORE_ID_TOKEN = True
 # ALLOW_LOGOUT_GET_METHOD = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-# CSRF_COOKIE_HTTPONLY = True
 # OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.my_auth.keycloak_logout'
 
 #################### END KEYCLOAK CONFIG ####################
