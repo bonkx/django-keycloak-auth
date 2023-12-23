@@ -31,23 +31,20 @@ def public(request):
     return render(request, "web/public.html", {})
 
 
-# @login_required
 @login_not_required
 def index(request):
-    # user = request.user
-    # print(settings.KC_BASE_URI)
-    # user_info = get_user_keycloak_info(request)
-    # print(user_info)
-    # if not user_info:
-    #     redirect('protected')
-    # response = requests.get(discovery_url)
-    # # response = requests.get(discovery_url, verify=False)
-    # if response.status_code != 200:
-    #     raise ValueError("Failed to retrieve provider configuration.")
-    return render(request, "web/home.html", {})
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    else:
+        return redirect('oidc_authentication_init')
+    # return render(request, "web/home.html", {})
 
 
 # @login_required
+def dashboard(request):
+    return render(request, "web/dashboard.html", {})
+
+
 def protected(request):
     return render(request, "web/protect.html", {})
 
@@ -56,4 +53,4 @@ def oauth_logout(request):
     print('Loggin out {}'.format(request.user))
     auth.logout(request)
     print(request.user)
-    return HttpResponseRedirect('/protected/')
+    return HttpResponseRedirect('/')

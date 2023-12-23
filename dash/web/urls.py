@@ -9,6 +9,7 @@ urlpatterns = [
 
     path("_oauth/logout/", home.oauth_logout),
     path("", home.index, name="home"),
+    path("dashboard/", home.dashboard, name="dashboard"),
     path("protected/", home.protected, name="protected"),
     path("public/", home.public, name="public"),
 
