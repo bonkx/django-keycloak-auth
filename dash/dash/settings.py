@@ -36,7 +36,7 @@ ALLOWED_HOSTS = [
     'localhost', '127.0.0.1',
     '10.101.213.121', '10.101.213.122',
     'app.puskeu.polri.info', 'apepe.puskeu.polri.info',
-    'auth.puskeu.polri.info'
+    # 'auth.puskeu.polri.info'
 ]
 # ALLOWED_HOSTS = ['*']
 
@@ -219,9 +219,9 @@ KC_ADMIN_PASS = os.environ.get('KC_ADMIN_PASS', 'admin')
 KC_REALM = os.environ.get('KC_REALM', 'test')
 OIDC_RP_CLIENT_ID = os.environ.get('KC_CLIENT_ID', 'test')
 OIDC_RP_CLIENT_SECRET = os.environ.get('KC_CLIENT_SECRET', 'super_scret')
+
 # jboss
 # OIDC_OP_BASE_URL = "%s/auth/realms/%s" % (KC_BASE_URI, KC_REALM)
-
 # quay
 OIDC_OP_BASE_URL = "%s/realms/%s" % (KC_BASE_URI, KC_REALM)
 
