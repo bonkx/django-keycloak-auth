@@ -1,6 +1,6 @@
 import requests
 from django.conf import settings
-from django.contrib.auth import logout
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
@@ -32,6 +32,7 @@ def public(request):
 
 
 # @login_required
+@login_not_required
 def index(request):
     # user = request.user
     # print(settings.KC_BASE_URI)
@@ -53,6 +54,6 @@ def protected(request):
 
 def oauth_logout(request):
     print('Loggin out {}'.format(request.user))
-    logout(request)
+    auth.logout(request)
     print(request.user)
     return HttpResponseRedirect('/protected/')
