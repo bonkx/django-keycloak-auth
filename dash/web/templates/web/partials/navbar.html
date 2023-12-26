@@ -9,8 +9,8 @@
             {% with request.resolver_match.url_name as url_name %}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {% if url_name == 'home' %}active{% endif %}" aria-current="page"
-                        href="/">Home</a>
+                    <a class="nav-link {% if url_name == 'dashboard' %}active{% endif %}"
+                        href="{% url "dashboard" %}">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if url_name == 'protected' %}active{% endif %}"
