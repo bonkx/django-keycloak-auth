@@ -38,7 +38,7 @@
             <button id="btnLogout" class="btn btn-danger mx-2" type="button">
                 <i id="loader" class=""></i> Logout
             </button>
-            <a class="btn btn-success mx-2" href="{% url 'logout' %}">Logout 2</a>
+            {% comment %} <a class="btn btn-success mx-2" href="{% url 'logout' %}">Logout 2</a> {% endcomment %}
             {% else %}
             <a class="btn btn-success mx-2" href="{% url 'oidc_authentication_init' %}">Login</a>
             {% endif %}
