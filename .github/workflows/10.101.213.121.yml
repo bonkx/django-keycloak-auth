@@ -10,7 +10,6 @@ jobs:
     runs-on:
       - self-hosted
       - 10.101.213.121
-      - 10.101.213.122
 
     steps:
       - uses: actions/checkout@v3
