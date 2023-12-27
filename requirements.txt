@@ -6,4 +6,3 @@ gunicorn
 mozilla-django-oidc
 python-dotenv
 django-login-required-middleware
-django-cors-headers
