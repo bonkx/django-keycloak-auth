@@ -17,7 +17,7 @@ import requests
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv(override=True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,12 +32,7 @@ SECRET_KEY = 'kzr7202=a#4qd$g3z_v0v1$n*#1f5rv@moc%tq@yf+we2t)^#g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost', '127.0.0.1',
-    '10.101.213.121', '10.101.213.122',
-    'app.puskeu.polri.info', 'apepe.puskeu.polri.info',
-]
-# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -51,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'corsheaders',
 
     'api',
     'web',
@@ -60,7 +54,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -73,19 +66,11 @@ MIDDLEWARE = [
 
 LOGIN_REQUIRED_IGNORE_PATHS = [
     # r'/accounts/logout/$',
-    # r'/accounts/signup/$',
+    r'/login/$',
     r'/admin(.*)$',
     r'/oidc(.*)$',
     r'/api(.*)$',
 ]
-
-# CORS_ALLOWED_ORIGINS = [
-#     "http://10.101.215.10:8080",
-#     "https://auth.puskeu.polri.go.id"
-# ]
-# CORS_ALLOWED_ORIGIN_REGEXES = [
-#     r"^https://\w+\.puskeu.polri\.go.id$",
-# ]
 
 AUTHENTICATION_BACKENDS = [
     'dash.auth_backends.KeycloakOIDCAuthenticationBackend',
@@ -187,7 +172,14 @@ REST_FRAMEWORK = {
     'MAX_PAGINATE_BY': 100
 }
 
+
 #################### KEYCLOAK CONFIG ####################
+
+"""
+manually set the OIDC backend DRF to basic OIDCAuthenticationBackend,
+because AUTHENTICATION_BACKENDS using custom KeycloakOIDCAuthenticationBackend
+"""
+OIDC_DRF_AUTH_BACKEND = 'mozilla_django_oidc.auth.OIDCAuthenticationBackend'
 
 
 def discover_oidc(discovery_url: str) -> dict:
@@ -255,7 +247,7 @@ OIDC_OP_LOGOUT_ENDPOINT = discovery_info["end_session_endpoint"]
 
 # OIDC_STORE_ACCESS_TOKEN = True
 # OIDC_STORE_ID_TOKEN = True
-# ALLOW_LOGOUT_GET_METHOD = True
-OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.keycloak_auth.provider_logout'
+ALLOW_LOGOUT_GET_METHOD = True
+OIDC_OP_LOGOUT_URL_METHOD = 'dash.utils.keycloak.provider_logout'
 
 #################### END KEYCLOAK CONFIG ####################

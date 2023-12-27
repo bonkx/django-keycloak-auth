@@ -4,11 +4,11 @@ from django.views.generic.base import TemplateView
 from web.views import auth, home
 
 urlpatterns = [
-    # path('login/', auth_views.LoginView.as_view(), name='login'),
-    # path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth.oauth_logout, name='logout'),
 
     #######  KEYCLOAK FRONT-CHANNEL LOGOUT URL  ########
-    path("_oauth/logout/", auth.oauth_logout),
+    # path("_oauth/logout/", auth.oauth_logout),
     ####################################################
 
     path("", home.index, name="home"),
