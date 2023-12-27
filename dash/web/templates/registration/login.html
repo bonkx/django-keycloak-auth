@@ -1,13 +1,164 @@
-<!-- templates/registration/login.html -->
-{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Login{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
 
-{% block content %}
-<h2>Log In</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Log In</button>
-</form>
-{% endblock %}
+    <link rel="preload" as="style" href="{% static "/assets/app-2dcbcdc0.css" %}" />
+    <link rel="stylesheet" href="{% static "assets/app-2dcbcdc0.css" %}" />
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="main-layout">
+    <div>
+        <div class="tw-flex tw-flex-col md:tw-flex-row md:tw-h-screen">
+            <div
+                class="tw-flex tw-flex-col tw-items-start tw-justify-around tw-px-20 tw-py-14 tw-w-full md:tw-w-3/5 tw-bg-[#172554]">
+                <div class="tw-flex tw-items-center tw-gap-2">
+                    <img src="{% static "/assets/layouts/main/logo.svg" %}" alt="logo">
+                    <h1 class="tw-text-2xl tw-font-semibold tw-leading-9 tw-text-white">PUSKEU POLRI</h1>
+                </div>
+
+                <div class="tw-w-full tw-mx-auto tw-mt-5">
+                    <div class="tw-grid tw-grid-cols-12 tw-gap-5 tw-mt-5">
+                        <div
+                            class="tw-col-span-12 md:tw-col-span-6 tw-w-full tw-rounded-lg tw-p-5 tw-bg-[#1E3A8A] hover:tw-bg-white tw-group">
+                            <div class="tw-flex tw-items-start tw-justify-between">
+                                <img src="{% static "/assets/pages/auth/icon-puskeu.svg" %}" alt="Close Icon"
+                                    loading="lazy">
+                                <a href="/" class="tw-hidden group-hover:tw-block">
+                                    <img src="{% static "/assets/pages/apps/lainnya/button-link.svg" %}" alt="Icon"
+                                        loading="lazy">
+                                </a>
+                            </div>
+                            <h1
+                                class="tw-mt-2 tw-text-2xl tw-font-bold tw-leading-8 tw-text-white group-hover:tw-text-black">
+                                Website PUSKEU POLRI</h1>
+                            <p class="tw-text-base tw-font-normal tw-leading-6 tw-text-white group-hover:tw-text-black">
+                                Buka Website PUSKEU POLRI</p>
+                        </div>
+                        <div
+                            class="tw-col-span-12 md:tw-col-span-6 tw-w-full tw-rounded-lg tw-p-5 tw-bg-[#1E3A8A] hover:tw-bg-white tw-group">
+                            <div class="tw-flex tw-items-start tw-justify-between">
+                                <img src="{% static "/assets/pages/auth/icon-klop.svg" %}" alt="Close Icon"
+                                    loading="lazy">
+                                <a href="/" class="tw-hidden group-hover:tw-block">
+                                    <img src="{% static "/assets/pages/apps/lainnya/button-link.svg" %}" alt="Icon"
+                                        loading="lazy">
+                                </a>
+                            </div>
+                            <h1
+                                class="tw-mt-2 tw-text-2xl tw-font-bold tw-leading-8 tw-text-white group-hover:tw-text-black">
+                                Klop</h1>
+                            <p class="tw-text-base tw-font-normal tw-leading-6 tw-text-white group-hover:tw-text-black">
+                                Kajian dan Literasi Online Terpadu</p>
+                        </div>
+                        <div
+                            class="tw-col-span-12 md:tw-col-span-6 tw-w-full tw-rounded-lg tw-p-5 tw-bg-[#1E3A8A] hover:tw-bg-white tw-group">
+                            <div class="tw-flex tw-items-start tw-justify-between">
+                                <img src="{% static "/assets/pages/auth/icon-sinkron.svg" %}" alt="Close Icon"
+                                    loading="lazy">
+                                <a href="/" class="tw-hidden group-hover:tw-block">
+                                    <img src="{% static "/assets/pages/apps/lainnya/button-link.svg" %}" alt="Icon"
+                                        loading="lazy">
+                                </a>
+                            </div>
+                            <h1
+                                class="tw-mt-2 tw-text-2xl tw-font-bold tw-leading-8 tw-text-white group-hover:tw-text-black">
+                                Sinkron</h1>
+                            <p class="tw-text-base tw-font-normal tw-leading-6 tw-text-white group-hover:tw-text-black">
+                                Sarana informaasi, Konsultasi dan Rekonsilasi Online</p>
+                        </div>
+                        <div
+                            class="tw-col-span-12 md:tw-col-span-6 tw-w-full tw-rounded-lg tw-p-5 tw-bg-[#1E3A8A] hover:tw-bg-white tw-group">
+                            <div class="tw-flex tw-items-start tw-justify-between">
+                                <img src="{% static "/assets/pages/auth/icon-harmoni.svg" %}" alt="Close Icon"
+                                    loading="lazy">
+                                <a href="/" class="tw-hidden group-hover:tw-block">
+                                    <img src="{% static "/assets/pages/apps/lainnya/button-link.svg" %}" alt="Icon"
+                                        loading="lazy">
+                                </a>
+                            </div>
+                            <h1
+                                class="tw-mt-2 tw-text-2xl tw-font-bold tw-leading-8 tw-text-white group-hover:tw-text-black">
+                                Harmoni</h1>
+                            <p class="tw-text-base tw-font-normal tw-leading-6 tw-text-white group-hover:tw-text-black">
+                                Himpunan artikel, regulasi, monitoring dan informasi</p>
+                        </div>
+                        <div
+                            class="tw-col-span-12 md:tw-col-span-6 tw-w-full tw-rounded-lg tw-p-5 tw-bg-[#1E3A8A] hover:tw-bg-white tw-group">
+                            <div class="tw-flex tw-items-start tw-justify-between">
+                                <img src="{% static "/assets/pages/auth/icon-integritas.svg" %}" alt="Close Icon"
+                                    loading="lazy">
+                                <a href="/" class="tw-hidden group-hover:tw-block">
+                                    <img src="{% static "/assets/pages/apps/lainnya/button-link.svg" %}" alt="Icon"
+                                        loading="lazy">
+                                </a>
+                            </div>
+                            <h1
+                                class="tw-mt-2 tw-text-2xl tw-font-bold tw-leading-8 tw-text-white group-hover:tw-text-black">
+                                Website Zona Integritas</h1>
+                            <p class="tw-text-base tw-font-normal tw-leading-6 tw-text-white group-hover:tw-text-black">
+                                Buka Website Zona Integritas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tw-flex tw-items-center tw-justify-center tw-w-full tw-bg-white md:tw-w-2/5">
+                <form class="tw-p-6 tw-w-[400px] tw-border tw-rounded-lg" method="POST">
+
+                    {% if form.errors %}
+                    <div class="tw-mt-5 tw-bg-[#EFF6FF] tw-border tw-border-[#3B82F6] tw-px-4 tw-py-3 tw-rounded-lg tw-relative"
+                        role="alert">
+                        <i
+                            class="fa-solid fa-circle-exclamation tw-bg-blue-500 tw-text-lg tw-text-white tw-p-2 tw-mr-1.5 tw-rounded-lg"></i>
+                        <span class="tw-block sm:tw-inline">Username atau Password tidak valid.</span>
+                    </div>
+                    {% endif %}
+
+
+                    {% csrf_token %}
+                    <h1 class="tw-mb-4 tw-mt-4 tw-text-3xl tw-font-semibold tw-leading-9">Selamat Datang</h1>
+                    <p class="tw-text-base tw-font-normal tw-leading-4 tw-text-gray-600 tw-mb-7">Silahkan masuk ke akun
+                        anda
+                    </p>
+
+                    <div>
+                        <label for="username"
+                            class="tw-font-normal tw-text-sm tw-leading-4 tw-text-[#1E293B] tw-mb-2">Nama
+                            Pengguna</label>
+                        <div class="tw-flex tw-items-center tw-px-3 tw-py-2 tw-mb-4 tw-border-2 tw-rounded-2xl">
+                            <input class="tw-w-full tw-border-none tw-outline-none" type="text" name="username"
+                                id="username" placeholder="Nama Pengguna" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="password"
+                            class="tw-font-normal tw-text-sm tw-leading-4 tw-text-[#1E293B] tw-mb-2">Kata
+                            Sandi</label>
+                        <div class="tw-flex tw-items-center tw-px-3 tw-py-2 tw-mb-4 tw-border-2 tw-rounded-2xl">
+                            <input class="tw-w-full tw-border-none tw-outline-none" type="password" name="password"
+                                id="password" placeholder="********" />
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="tw-block tw-w-full tw-bg-[#3B82F6] hover:tw-bg-blue-600 tw-mt-4 tw-py-3 tw-rounded-lg tw-text-white tw-font-semibold tw-mb-2">Masuk</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

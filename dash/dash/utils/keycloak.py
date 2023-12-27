@@ -1,8 +1,9 @@
+import requests
 from django.conf import settings
 from django.urls import reverse_lazy
 from django.utils.http import urlencode
 
-# app/auth.py
+# dash/utils/keycloak.py
 
 
 def provider_logout(request):
@@ -28,7 +29,22 @@ def provider_logout(request):
             settings.OIDC_OP_LOGOUT_ENDPOINT
             + "?"
             + urlencode({"client_id": settings.OIDC_RP_CLIENT_ID,
-                        "post_logout_redirect_uri": request.build_absolute_uri(logout_redirect_uri)})
+                         "post_logout_redirect_uri": request.build_absolute_uri(logout_redirect_uri)})
         )
 
     return logout_url
+
+
+def get_keycloak_info(access_token):
+    """Return user details dictionary. The id_token and payload are not used in
+    the default implementation, but may be used when overriding this method"""
+
+    response = requests.get(
+        settings.OIDC_OP_USER_ENDPOINT,
+        headers={"Authorization": "Bearer {0}".format(access_token)},
+        verify=True,
+        timeout=None,
+        proxies=None,
+    )
+
+    return response
